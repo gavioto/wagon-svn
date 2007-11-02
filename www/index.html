@@ -101,14 +101,14 @@
     &lt;/extensions&gt;
   &lt;/build&gt;
 
-  &lt;pluginRepositories&gt;
+  &lt;repositories&gt;
     ...
     &lt;repository&gt;
       &lt;id&gt;maven2-repository.dev.java.net&lt;/id&gt;
       &lt;name&gt;Java.net Repository for Maven&lt;/name&gt;
       &lt;url&gt;http://download.java.net/maven/2/&lt;/url&gt;
     &lt;/repository&gt;
-  &lt;/pluginRepositories&gt;</pre></div><p>This enables the wagon-svn module for your build. If your project is a multi-module project, just do this at the top-level POM.</p><div class="section"><h3>How to deploy Maven-generate site to your java.net project</h3><p>Suppose your java.net project name is 'xyz'. To have &quot;<tt>maven site:deploy</tt>&quot; upload contents to this project, set the distribution management portion of the POM as follows:</p><div class="source"><pre>  &lt;distributionManagement&gt;
+  &lt;/repositories&gt;</pre></div><p>This enables the wagon-svn module for your build. If your project is a multi-module project, just do this at the top-level POM.</p><div class="section"><h3>How to deploy Maven-generate site to your java.net project</h3><p>Suppose your java.net project name is 'xyz'. To have &quot;<tt>maven site:deploy</tt>&quot; upload contents to this project, set the distribution management portion of the POM as follows:</p><div class="source"><pre>  &lt;distributionManagement&gt;
     &lt;site&gt;
       &lt;id&gt;xyz-www&lt;/id&gt;
       &lt;url&gt;svn:https://svn.dev.java.net/svn/xyz/trunk/www/&lt;/url&gt;
