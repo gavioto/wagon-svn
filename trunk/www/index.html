@@ -108,7 +108,7 @@
       &lt;extension&gt;
         &lt;groupId&gt;org.jvnet.wagon-svn&lt;/groupId&gt;
         &lt;artifactId&gt;wagon-svn&lt;/artifactId&gt;
-        &lt;version&gt;1.0&lt;/version&gt;
+        &lt;version&gt;1.1&lt;/version&gt;
       &lt;/extension&gt;
     &lt;/extensions&gt;
   &lt;/build&gt;
@@ -120,20 +120,20 @@
       &lt;name&gt;Java.net Repository for Maven&lt;/name&gt;
       &lt;url&gt;http://download.java.net/maven/2/&lt;/url&gt;
     &lt;/repository&gt;
-  &lt;/repositories&gt;</pre></div><p>This enables the wagon-svn module for your build. If your project is a multi-module project, just do this at the top-level POM.</p><div class="section"><h3>How to deploy Maven-generate site to your java.net project</h3><p>Suppose your java.net project name is 'xyz'. To have &quot;<tt>maven site:deploy</tt>&quot; upload contents to this project, set the distribution management portion of the POM as follows:</p><div class="source"><pre>  &lt;distributionManagement&gt;
+  &lt;/repositories&gt;</pre></div><p>This enables the wagon-svn module for your build. If your project is a multi-module project, just do this at the top-level POM.</p><div class="section"><h3>How to deploy Maven-generate site to your java.net project</h3><p>Suppose your java.net project name is 'xyz'. To have &quot;<tt>maven site:deploy</tt>&quot; upload contents to this project, set the distribution management portion of the POM as follows:</p><div class="source"><pre>  &lt;distributionManagement&gt;
     &lt;site&gt;
       &lt;id&gt;xyz-www&lt;/id&gt;
       &lt;url&gt;svn:https://svn.dev.java.net/svn/xyz/trunk/www/&lt;/url&gt;
     &lt;/site&gt;
     ...
-  &lt;/distributionManagement&gt;</pre></div><p>You can then run &quot;<tt>mvn site:deploy</tt>&quot; normally. Also, if you are doing this, you might find <a href="https://maven-javanet-skin.dev.java.net/">maven2 java.net skin</a> useful, so that your site look&amp;feel matches the rest of java.net.</p></div><div class="section"><h3>How to deploy artifacts to the java.net maven2 repository</h3><p>Once you get a commit access to the java.net maven2 repository, set the distribution management portion of the POM as follows:</p><div class="source"><pre>  &lt;distributionManagement&gt;
+  &lt;/distributionManagement&gt;</pre></div><p>You can then run &quot;<tt>mvn site:deploy</tt>&quot; normally. Also, if you are doing this, you might find <a href="https://maven-javanet-skin.dev.java.net/">maven2 java.net skin</a> useful, so that your site look&amp;feel matches the rest of java.net.</p></div><div class="section"><h3>How to deploy artifacts to the java.net maven2 repository</h3><p>Once you get a commit access to the java.net maven2 repository, set the distribution management portion of the POM as follows:</p><div class="source"><pre>  &lt;distributionManagement&gt;
     &lt;repository&gt;
       &lt;uniqueVersion&gt;false&lt;/uniqueVersion&gt;
-      &lt;id&gt;local-repository&lt;/id&gt;
+      &lt;id&gt;java.net-maven2-repository&lt;/id&gt;
       &lt;url&gt;svn:https://svn.dev.java.net/svn/maven2-repository/trunk/www/repository/&lt;/url&gt;
     &lt;/repository&gt;
     ...
-  &lt;/distributionManagement&gt;</pre></div><p>This causes &quot;<tt>mvn deploy</tt>&quot; and &quot;<tt>mvn release:perform</tt>&quot; to deploy artifacts to the java.net maven2 repository.</p></div><div class="section"><h3>Authentication</h3><p>If you are using wagon-svn with a repository that requires an authentication (including java.net), please first use the command line subversion client and store the credential. Wagon-svn reads your authentication information from there.</p></div></div>
+  &lt;/distributionManagement&gt;</pre></div><p>This causes &quot;<tt>mvn deploy</tt>&quot; and &quot;<tt>mvn release:perform</tt>&quot; to deploy artifacts to the java.net maven2 repository.</p></div></div>
       </div>
     </div>
     <div class="clear">
@@ -148,8 +148,8 @@
 
   
   
-  &nbsp;| Last Published: 11/02/2007
-  &nbsp;| Version: 1.1-SNAPSHOT
+  &nbsp;| Last Published: 11/03/2007
+  &nbsp;| Version: 1.2-SNAPSHOT
 </div>
       <div class="clear">
         <hr/>
