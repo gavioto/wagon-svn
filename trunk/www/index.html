@@ -205,6 +205,34 @@
 , just like you do with wagon-ssh. Second, if Maven is launched interactively, wagon-svn will prompt you interactively.</p>
 </div>
 </div>
+<div class="section"><h2>Using Wagon-svn with deploy:deploy-file</h2>
+<p>Because wagon-svn is not a built-in wagon transport, making it work with <tt>mvn deploy:deploy-file</tt>
+ requires one extra step. First, save the following POM by some name, such as <tt>deploy.pom</tt>
+</p>
+<div class="source"><pre>&lt;project&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;groupId&gt;dummy&lt;/groupId&gt;
+  &lt;artifactId&gt;wagn-svn-deploy-pom/artifactId&gt;
+  &lt;packaging&gt;pom&lt;/packaging&gt;
+  &lt;version&gt;1&lt;/version&gt;
+
+  &lt;build&gt;
+    &lt;extensions&gt;
+      &lt;extension&gt;
+        &lt;groupId&gt;org.jvnet.wagon-svn&lt;/groupId&gt;
+        &lt;artifactId&gt;wagon-svn&lt;/artifactId&gt;
+        &lt;version&gt;1.8&lt;/version&gt;
+      &lt;/extension&gt;
+    &lt;/extensions&gt;
+  &lt;/build&gt;
+&lt;/project&gt;</pre>
+</div>
+<p>Then invoke the <tt>mvn deploy:depoloy-file</tt>
+ with additional <tt>-f path/to/deploy.pom</tt>
+, such as:</p>
+<div class="source"><pre>mvn deploy:deploy-file -f deploy.pom -DpomFile=my.pom -Dfile=my.jar -Durl=...</pre>
+</div>
+</div>
 
       </div>
     </div>
@@ -220,7 +248,7 @@
 
   
   
-  &nbsp;| Last Published: 01/17/2008
+  &nbsp;| Last Published: 02/26/2008
   &nbsp;| Version: 1.9-SNAPSHOT
 </div>
       <div class="clear">
